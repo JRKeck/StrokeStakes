@@ -1,0 +1,72 @@
+# Dart/Flutter related files
+*.dart_tool/
+*.packages
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+.flutter-symbolic-links
+.migrate-todo
+*.lock
+
+# iOS specific files
+ios/Flutter/Flutter.framework/
+ios/Flutter/Flutter.podspec
+ios/Flutter/engine/
+ios/Flutter/App.framework
+ios/.symlinks/
+ios/Pods/
+ios/Podfile.lock
+
+# macOS specific files
+macos/Flutter/ephemeral/
+macos/Pods/
+macos/Podfile.lock
+
+# Android specific files
+android/.gradle/
+android/app/*.iml
+android/local.properties
+android/.idea
+android/gradle/wrapper/gradle-wrapper.properties
+android/app/build/
+android/gradlew
+android/gradlew.bat
+android/gradle/
+android/key.properties
+
+# Windows specific files
+windows/flutter/ephemeral/
+windows/.dart_tool/
+windows/.packages
+windows/build/
+
+# Web specific files
+web/manifest.json
+web/.dart_tool/
+web/.packages
+web/build/
+
+# Linux specific files
+linux/flutter/ephemeral/
+linux/.dart_tool/
+linux/.packages
+linux/build/
+
+# IDE specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.lock
+.DS_Store
+Thumbs.db
