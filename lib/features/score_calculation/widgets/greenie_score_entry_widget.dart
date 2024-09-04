@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/score_calculation_model.dart';
 import '../services/score_calculation_service.dart';
+import '../widgets/dialog_title_bar.dart'; // Import the custom dialog title bar widget
 
 class GreenieScoreEntryWidget extends StatefulWidget {
   final List<PlayerScore> playerScores;
@@ -21,6 +22,8 @@ class GreenieScoreEntryWidget extends StatefulWidget {
 }
 
 class _GreenieScoreEntryWidgetState extends State<GreenieScoreEntryWidget> {
+  String? _validationError; // Variable to hold validation error message
+
   @override
   Widget build(BuildContext context) {
     final greenies = widget.scoreCalculationService.getGreenies(widget.isFrontNine);
@@ -75,7 +78,10 @@ class _GreenieScoreEntryWidgetState extends State<GreenieScoreEntryWidget> {
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-              title: Text(existingGreenie != null ? 'Update Greenie' : 'Add Greenie'),
+              titlePadding: EdgeInsets.zero,
+              contentPadding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 30.0),
+              actionsPadding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18.0),
+              title: DialogTitleBar(title: existingGreenie != null ? 'Update Greenie' : 'Add Greenie'),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -92,6 +98,7 @@ class _GreenieScoreEntryWidgetState extends State<GreenieScoreEntryWidget> {
                     onChanged: (String? value) {
                       setState(() {
                         selectedPlayer = value;
+                        _validationError = null; // Clear validation error when a player is selected
                       });
                     },
                   ),
@@ -108,18 +115,37 @@ class _GreenieScoreEntryWidgetState extends State<GreenieScoreEntryWidget> {
                     onChanged: (GreenieResult? value) {
                       setState(() {
                         selectedResult = value;
+                        _validationError = null; // Clear validation error when a result is selected
                       });
                     },
                   ),
+                  if (_validationError != null)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Text(
+                        _validationError!,
+                        style: TextStyle(color: Theme.of(context).colorScheme.error),
+                      ),
+                    ),
                 ],
               ),
               actions: [
-                TextButton(
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                   child: const Text('Cancel'),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
                 if (existingGreenie != null)
-                  TextButton(
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                      minimumSize: Size.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
                     child: const Text('Delete'),
                     onPressed: () {
                       widget.scoreCalculationService.removeGreenie(
@@ -130,10 +156,27 @@ class _GreenieScoreEntryWidgetState extends State<GreenieScoreEntryWidget> {
                       widget.onScoreUpdated();
                     },
                   ),
-                TextButton(
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                   child: const Text('Save'),
                   onPressed: () {
-                    if (selectedPlayer != null && selectedResult != null) {
+                    if (selectedPlayer == null && selectedResult == null) {
+                      setState(() {
+                        _validationError = 'Please select both a player and a result.';
+                      });
+                    } else if (selectedPlayer == null) {
+                      setState(() {
+                        _validationError = 'Please select a player.';
+                      });
+                    } else if (selectedResult == null) {
+                      setState(() {
+                        _validationError = 'Please select a result.';
+                      });
+                    } else {
                       widget.scoreCalculationService.updateGreenie(
                         widget.isFrontNine,
                         GreenieScore(playerName: selectedPlayer!, result: selectedResult!),

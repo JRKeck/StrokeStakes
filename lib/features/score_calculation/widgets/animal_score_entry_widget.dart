@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; // Import for HapticFeedback
 import '../models/score_calculation_model.dart';
 import '../services/score_calculation_service.dart';
+import '../widgets/dialog_title_bar.dart'; // Import the custom dialog title bar widget
 
 class AnimalScoreEntryWidget extends StatefulWidget {
   final String animalName;
@@ -25,6 +27,7 @@ class AnimalScoreEntryWidget extends StatefulWidget {
 class _AnimalScoreEntryWidgetState extends State<AnimalScoreEntryWidget> {
   String? displayPlayerName;
   int? displayScore;
+  String? _validationError; // Variable to hold validation error message
 
   @override
   void initState() {
@@ -90,8 +93,16 @@ class _AnimalScoreEntryWidgetState extends State<AnimalScoreEntryWidget> {
 
         return StatefulBuilder(
           builder: (context, setState) {
+            // Determine the dialog title dynamically
+            final String dialogTitle = displayScore != null && displayScore! > 0
+                ? 'Update ${widget.animalName} Score'
+                : 'Add ${widget.animalName} Score';
+
             return AlertDialog(
-              title: Text('${displayPlayerName != null ? 'Update' : 'Add'} ${widget.animalName} Score'),
+              titlePadding: EdgeInsets.zero,
+              contentPadding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 30.0),
+              actionsPadding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18.0),
+              title: DialogTitleBar(title: dialogTitle),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -108,29 +119,97 @@ class _AnimalScoreEntryWidgetState extends State<AnimalScoreEntryWidget> {
                     onChanged: (String? value) {
                       setState(() {
                         selectedPlayer = value;
+                        _validationError = null; // Clear validation error when a player is selected
                       });
                     },
                   ),
-                  TextField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(labelText: 'Enter # of ${widget.animalName}s'),
-                    controller: TextEditingController(text: score.toString()),
-                    onChanged: (value) {
-                      score = int.tryParse(value) ?? 0;
-                    },
+                  if (_validationError != null) // Display validation error if necessary
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Text(
+                        _validationError!,
+                        style: TextStyle(color: Theme.of(context).colorScheme.error),
+                      ),
+                    ),
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: score > 0
+                            ? () {
+                                HapticFeedback.lightImpact(); // Add haptic feedback when decrementing
+                                setState(() => score--);
+                              }
+                            : null,
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black,
+                              width: 2.0,
+                            ),
+                          ),
+                          child: Icon(
+                            Icons.remove,
+                            color: Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text('$score', style: Theme.of(context).textTheme.headlineSmall),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          HapticFeedback.lightImpact(); // Add haptic feedback when incrementing
+                          setState(() => score++);
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black,
+                              width: 2.0,
+                            ),
+                          ),
+                          child: Icon(
+                            Icons.add,
+                            color: Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
               actions: [
-                TextButton(
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                   child: const Text('Cancel'),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
-                TextButton(
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                   child: const Text('Save'),
                   onPressed: () {
-                    if (selectedPlayer != null) {
-                      widget.scoreCalculationService.updateScore(selectedPlayer!, widget.animalName, score);
+                    if (selectedPlayer == null) {
+                      setState(() {
+                        _validationError = 'Please select a player.';
+                      });
+                    } else {
+                      widget.scoreCalculationService.updateScore(
+                          selectedPlayer!, widget.animalName, score);
                       Navigator.of(context).pop();
                       _updateDisplayScore();
                       widget.onScoreUpdated();

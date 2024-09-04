@@ -4,6 +4,7 @@ import '../features/score_calculation/widgets/animal_score_entry_widget.dart';
 import '../features/score_calculation/widgets/greenie_score_entry_widget.dart';
 import 'totals_screen.dart';
 import '../features/score_calculation/widgets/wad_score_entry_widget.dart';
+import '../features/score_calculation/widgets/dialog_title_bar.dart'; // Import the custom dialog title bar widget
 
 class ScoreEntryScreen extends StatefulWidget {
   final ScoreCalculationService scoreCalculationService;
@@ -24,23 +25,38 @@ class _ScoreEntryScreenState extends State<ScoreEntryScreen> {
   Future<bool> _showExitConfirmationDialog(BuildContext context) async {
     return await showDialog<bool>(
       context: context,
-      builder: (BuildContext dialogContext) => AlertDialog(
-        title: const Text('Exit Game'),
-        content: const Text('Are you sure you want to exit the game? All progress will be lost.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(dialogContext).pop(false),
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(dialogContext).pop(true);
-              widget.scoreCalculationService.endCalculation();
-            },
-            child: const Text('Exit'),
-          ),
-        ],
-      ),
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          titlePadding: EdgeInsets.zero, // Remove default padding around title
+          contentPadding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 30.0),
+          actionsPadding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18.0),
+          title: const DialogTitleBar(title: 'Exit Game'),
+          content: const Text('Are you sure you want to exit the game? All progress will be lost.'),
+          actions: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                minimumSize: Size.zero,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              onPressed: () => Navigator.of(dialogContext).pop(false),
+              child: const Text('Cancel'),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                minimumSize: Size.zero,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              onPressed: () {
+                Navigator.of(dialogContext).pop(true);
+                widget.scoreCalculationService.endCalculation();
+              },
+              child: const Text('Exit'),
+            ),
+          ],
+        );
+      },
     ) ?? false;
   }
 

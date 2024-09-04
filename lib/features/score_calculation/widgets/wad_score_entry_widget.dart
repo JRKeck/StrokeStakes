@@ -89,11 +89,16 @@ class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
           builder: (context, setState) {
             final Color primaryTextColor = Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black;
 
+            // Determine the dialog title dynamically
+            final String dialogTitle = displayWadCount != null && displayWadCount! > 0
+                ? 'Update Wads'
+                : 'Add Wads';
+
             return AlertDialog(
               titlePadding: EdgeInsets.zero,
               contentPadding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 30.0),
               actionsPadding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18.0),
-              title: const DialogTitleBar(title: 'Update Wads'),
+              title: DialogTitleBar(title: dialogTitle),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
