@@ -9,10 +9,10 @@ const Color _primaryTextColor = Colors.black;
 const Color _secondaryTextColor = Colors.white;
 
 // Dark theme color variables
-const Color _darkPrimaryColor = Color.fromRGBO(12, 86, 75, 1);
+const Color _darkPrimaryColor = Color.fromRGBO(16, 145, 93, 1);
 const Color _darkSecondaryColor = _secondaryColor;
 const Color _darkSurfaceColor = Color(0xFF303030); // Dark Grey
-const Color _darkErrorColor = Color.fromARGB(255, 255, 236, 127);
+const Color _darkErrorColor = Color.fromRGBO(229, 255, 0, 1);
 const Color _darkPrimaryTextColor = Colors.white;
 const Color _darkSecondaryTextColor = Colors.black;
 
@@ -91,6 +91,18 @@ class AppTheme {
         bodyColor: _primaryTextColor,
         displayColor: _primaryTextColor,
       ),
+      inputDecorationTheme: const InputDecorationTheme(
+        labelStyle: TextStyle(
+          fontSize: 22, // Set the label font size to 22px
+          fontWeight: FontWeight.bold, // Bold weight for visibility
+          color: _primaryTextColor,
+        ),
+        floatingLabelStyle: TextStyle(
+          fontSize: 22, // Set the floating label font size to 22px
+          fontWeight: FontWeight.bold,
+          color: _primaryTextColor,
+        ),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: _sharedElevatedButtonStyle.copyWith(
           backgroundColor: WidgetStateProperty.all(_primaryColor),
@@ -119,6 +131,16 @@ class AppTheme {
       textTheme: _baseTextTheme.apply(
         bodyColor: _darkPrimaryTextColor,
         displayColor: _darkPrimaryTextColor,
+      ),
+      inputDecorationTheme: const InputDecorationTheme(
+        labelStyle: TextStyle(
+          fontSize: 18, // Set the label font size to 22px
+          color: _darkPrimaryTextColor,
+        ),
+        floatingLabelStyle: TextStyle(
+          fontSize: 22, // Set the floating label font size to 22px
+          color: _darkPrimaryTextColor,
+        ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: _sharedElevatedButtonStyle.copyWith(
