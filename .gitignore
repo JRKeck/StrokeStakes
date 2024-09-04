@@ -63,6 +63,9 @@ linux/build/
 *.sublime-workspace
 *.sublime-project
 
+# Creative files
+*.psd
+
 # Temporary files
 *.tmp
 *.temp

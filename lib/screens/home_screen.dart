@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
               flex: 2, // Takes up 2/3 of the available vertical space
               child: Center(
                 child: Image.asset(
-                  'lib/core/assets/images/strokestakes_logo.png', // Path to your custom image
+                  'assets/images/strokestakes_logo.png', // Path to your custom image
                   width: 275, // Adjust width as needed
                   height: 275, // Adjust height as needed
                   fit: BoxFit.contain, // Adjust how the image should fit within the widget
