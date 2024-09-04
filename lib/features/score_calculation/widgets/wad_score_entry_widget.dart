@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; // Import for haptic feedback
 import '../models/score_calculation_model.dart';
 import '../services/score_calculation_service.dart';
+import '../widgets/dialog_title_bar.dart'; // Import the custom dialog title bar widget
 
 class WadScoreEntryWidget extends StatefulWidget {
   final List<PlayerScore> playerScores;
@@ -23,6 +25,7 @@ class WadScoreEntryWidget extends StatefulWidget {
 class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
   String? displayPlayerName;
   int? displayWadCount;
+  String? _validationError; // Variable to hold validation error message
 
   @override
   void initState() {
@@ -40,13 +43,16 @@ class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
 
   void _updateDisplayScore() {
     final wadOwner = widget.scoreCalculationService.getWadOwner(widget.isFrontNine);
-    displayPlayerName = wadOwner?.playerName;
-    displayWadCount = wadOwner?.wadCount;
-    setState(() {});
+    setState(() {
+      displayPlayerName = wadOwner?.playerName;
+      displayWadCount = wadOwner?.wadCount;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final Color primaryTextColor = Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black;
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -81,8 +87,13 @@ class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
 
         return StatefulBuilder(
           builder: (context, setState) {
+            final Color primaryTextColor = Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black;
+
             return AlertDialog(
-              title: const Text('Update Wads'),
+              titlePadding: EdgeInsets.zero,
+              contentPadding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 30.0),
+              actionsPadding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18.0),
+              title: const DialogTitleBar(title: 'Update Wads'),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -99,38 +110,97 @@ class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
                     onChanged: (String? value) {
                       setState(() {
                         selectedPlayer = value;
+                        _validationError = null; // Clear validation error when a player is selected
                       });
                     },
                   ),
+                  if (_validationError != null)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Text(
+                        _validationError!,
+                        style: TextStyle(color: Theme.of(context).colorScheme.error),
+                      ),
+                    ),
                   const SizedBox(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      IconButton(
-                        icon: const Icon(Icons.remove),
-                        onPressed: wadCount > 0
-                            ? () => setState(() => wadCount--)
+                      GestureDetector(
+                        onTap: wadCount > 0
+                            ? () {
+                                HapticFeedback.lightImpact(); // Add haptic feedback when decrementing
+                                setState(() => wadCount--);
+                              }
                             : null,
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: primaryTextColor,
+                              width: 2.0,
+                            ),
+                          ),
+                          child: Icon(
+                            Icons.remove,
+                            color: primaryTextColor,
+                          ),
+                        ),
                       ),
-                      Text('$wadCount', style: Theme.of(context).textTheme.headlineSmall),
-                      IconButton(
-                        icon: const Icon(Icons.add),
-                        onPressed: () => setState(() => wadCount++),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text('$wadCount', style: Theme.of(context).textTheme.headlineSmall),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          HapticFeedback.lightImpact(); // Add haptic feedback when incrementing
+                          setState(() => wadCount++);
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: primaryTextColor,
+                              width: 2.0,
+                            ),
+                          ),
+                          child: Icon(
+                            Icons.add,
+                            color: primaryTextColor,
+                          ),
+                        ),
                       ),
                     ],
                   ),
                 ],
               ),
               actions: [
-                TextButton(
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                   child: const Text('Cancel'),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
-                TextButton(
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                   child: const Text('Save'),
                   onPressed: () {
-                    if (selectedPlayer != null) {
-                      widget.scoreCalculationService.updateWad(widget.isFrontNine, selectedPlayer!, wadCount);
+                    if (selectedPlayer == null) {
+                      setState(() {
+                        _validationError = 'Please select a player.';
+                      });
+                    } else {
+                      widget.scoreCalculationService.updateWad(
+                          widget.isFrontNine, selectedPlayer!, wadCount);
                       Navigator.of(context).pop();
                       _updateDisplayScore();
                       widget.onScoreUpdated();
