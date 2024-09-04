@@ -51,7 +51,7 @@ const TextTheme _baseTextTheme = TextTheme(
   labelMedium: TextStyle(
       fontSize: 12, fontWeight: FontWeight.bold, fontFamily: _primaryFont),
   labelSmall: TextStyle(
-      fontSize: 10, fontWeight: FontWeight.bold, fontFamily: _primaryFont),
+      fontSize: 12, fontWeight: FontWeight.bold, fontFamily: _primaryFont),
 );
 
 // Shared button style to manage radius and other button properties
