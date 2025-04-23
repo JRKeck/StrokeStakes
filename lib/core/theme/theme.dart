@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
 // Common color variables
-const Color _primaryColor = Color.fromRGBO(16, 145, 93, 1); // Green
-const Color _secondaryColor = Color(0xFF7868D8); // Purple
-const Color _surfaceColor = Color(0xFFF5F5F5); // Light Grey
-const Color _errorColor = Color.fromRGBO(200, 6, 13, 1); // Yellow
-const Color _primaryTextColor = Colors.black;
-const Color _secondaryTextColor = Colors.white;
+const Color _primaryColor = Color(0xFF5DB444); // Updated green from the UI
+const Color _secondaryColor =
+    Color(0xFF2A472A); // Darker green for secondary elements
+const Color _surfaceColor = Color(0xFF1A1A1A); // Dark background
+const Color _errorColor = Color(0xFFD32F2F); // Darker red for better contrast
+const Color _primaryTextColor = Colors.white;
+const Color _secondaryTextColor =
+    Color(0xFF5DB444); // Using the updated green for accent text
 
 // Dark theme color variables
-const Color _darkPrimaryColor = Color.fromRGBO(16, 145, 93, 1);
-const Color _darkSecondaryColor = _secondaryColor;
-const Color _darkSurfaceColor = Color(0xFF303030); // Dark Grey
-const Color _darkErrorColor = Color.fromRGBO(229, 255, 0, 1);
+const Color _darkPrimaryColor = Color(0xFF5DB444); // Same updated green
+const Color _darkSecondaryColor = Color(0xFF2A472A); // Same darker green
+const Color _darkSurfaceColor =
+    Color(0xFF121212); // Even darker background for dark mode
+const Color _darkErrorColor = Color(0xFFD32F2F); // Matching error color
 const Color _darkPrimaryTextColor = Colors.white;
 
 // Font variables
