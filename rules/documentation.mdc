@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Documentation
+
+## Code Documentation
+- Document all public APIs
+- Use clear, concise comments
+- Keep documentation up-to-date
+- Follow Dart documentation style
+- Document complex algorithms
+- Explain non-obvious code
+- Document assumptions and constraints
+
+## README Updates
+- Update README for significant changes
+- Document new features
+- Keep installation instructions current
+- Update dependencies as needed
+- Document configuration options
+- Include troubleshooting guides
+- Keep examples up-to-date
+
+## API Documentation
+- Document all public methods
+- Include parameter descriptions
+- Document return values
+- Include usage examples
+- Document exceptions
+- Explain side effects
+- Document thread safety
+
+## Architecture Documentation
+- Document system architecture
+- Explain design decisions
+- Document data flow
+- Include sequence diagrams
+- Document state management
+- Explain security model
+- Document performance considerations
+
+## User Documentation
+- Write clear user guides
+- Include screenshots
+- Document all features
+- Include troubleshooting
+- Keep documentation current
+- Use consistent terminology
+- Include examples
+
+## Documentation Tools
+- Use Markdown for documentation
+- Use diagrams where helpful
+- Keep documentation versioned
+- Use consistent formatting
+- Include table of contents
+- Use proper heading hierarchy
+- Include cross-references

@@ -1,0 +1,56 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Development Workflow
+
+## Git Practices
+- Create feature branches from `main`
+- Use descriptive branch names (e.g., `feature/score-calculation`)
+- Write clear, descriptive commit messages
+- Keep commits focused and atomic
+- Rebase before creating pull requests
+- Never force push to main branch
+
+## Branch Naming Convention
+- `feature/` - New features or enhancements
+- `bugfix/` - Bug fixes
+- `hotfix/` - Urgent production fixes
+- `release/` - Release preparation
+- `docs/` - Documentation updates
+
+## Pull Request Process
+1. Create a new branch for your feature
+2. Make your changes
+3. Run tests and ensure they pass
+4. Update documentation if needed
+5. Create a pull request
+6. Request review from at least one team member
+7. Address any feedback
+8. Merge only after approval
+
+## Code Review Guidelines
+- Review code for functionality and quality
+- Check for adherence to project standards
+- Verify test coverage
+- Ensure documentation is updated
+- Look for potential security issues
+- Check for performance implications
+
+## Continuous Integration
+- All tests must pass before merging
+- Code coverage must meet minimum requirements
+- Static analysis must pass
+- Build must succeed on all platforms
+- Documentation must be up-to-date
+
+## Release Process
+1. Create release branch
+2. Update version numbers
+3. Update changelog
+4. Run final tests
+5. Get approval from team
+6. Merge to main
+7. Tag release
+8. Deploy to production

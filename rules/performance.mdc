@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Performance Guidelines
+
+## Memory Management
+- Dispose of controllers and listeners
+- Avoid memory leaks
+- Use const constructors where possible
+- Implement proper state management
+- Clean up resources properly
+- Monitor memory usage
+- Profile memory regularly
+
+## UI Performance
+- Optimize widget rebuilds
+- Use const widgets where possible
+- Implement proper state management
+- Avoid unnecessary setState calls
+- Use efficient layouts
+- Minimize widget tree depth
+- Cache expensive computations
+
+## Network Performance
+- Minimize network requests
+- Implement proper caching
+- Use efficient data formats
+- Compress data when possible
+- Handle offline scenarios
+- Implement retry logic
+- Monitor network usage
+
+## Data Management
+- Use efficient data structures
+- Implement proper pagination
+- Cache frequently used data
+- Clean up old data
+- Optimize database queries
+- Use appropriate indexes
+- Monitor data growth
+
+## Resource Usage
+- Optimize image sizes
+- Use appropriate image formats
+- Implement lazy loading
+- Cache static resources
+- Minimize disk I/O
+- Use efficient algorithms
+- Monitor resource usage
+
+## Performance Monitoring
+- Set up performance metrics
+- Monitor key performance indicators
+- Profile regularly
+- Track performance regressions
+- Set up alerts for issues
+- Document performance baselines
+- Review performance regularly

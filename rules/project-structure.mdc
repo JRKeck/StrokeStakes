@@ -1,0 +1,53 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Project Structure
+
+## Directory Organization
+- Keep related files together in feature folders
+- Use clear, descriptive folder names
+- Follow the established feature-based architecture
+- Keep shared components in the `shared` directory
+- Maintain consistent directory structure across features
+
+## File Organization
+- One widget per file
+- Keep files focused and single-purpose
+- Use appropriate file extensions (`.dart`, `.mdc`, etc.)
+- Group related files in feature folders
+- Follow the established naming conventions
+
+## Feature Structure
+Each feature should follow this structure:
+```
+feature_name/
+├── models/         # Data models and entities
+├── providers/      # State management
+├── widgets/        # UI components
+├── screens/        # Full screens/pages
+└── services/       # Business logic
+```
+
+## Shared Resources
+- Place shared widgets in `shared/widgets`
+- Put common utilities in `shared/utils`
+- Store constants in `shared/constants`
+- Keep theme-related code in `shared/theme`
+- Place shared services in `shared/services`
+
+## Asset Organization
+```
+assets/
+├── images/         # App images and icons
+├── fonts/          # Custom fonts
+└── icons/          # App icons
+```
+
+## Naming Conventions
+- Use lowercase with underscores for directory names
+- Prefix feature-specific directories with feature name
+- Use clear, descriptive names for all directories
+- Follow the established directory hierarchy
+- Keep directory names consistent with their purpose

@@ -1,0 +1,62 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Testing
+
+## Unit Tests
+- Write tests for all new features
+- Maintain test coverage above 80%
+- Test edge cases and error conditions
+- Use descriptive test names
+- Follow the AAA pattern (Arrange, Act, Assert)
+- Mock external dependencies
+- Test both success and failure paths
+
+## Widget Tests
+- Test widget behavior and state changes
+- Mock dependencies appropriately
+- Test user interactions
+- Verify UI updates
+- Test widget lifecycle
+- Test accessibility features
+- Test responsive behavior
+
+## Integration Tests
+- Test complete user flows
+- Test critical paths
+- Test cross-feature interactions
+- Test performance under load
+- Test error recovery
+- Test data persistence
+
+## Test Organization
+```
+test/
+├── unit/           # Unit tests
+├── widget/         # Widget tests
+├── integration/    # Integration tests
+└── helpers/        # Test utilities
+```
+
+## Test Naming Convention
+- Use descriptive test names
+- Follow the pattern: `test_<what>_<when>_<expected>`
+- Group related tests in test suites
+- Use clear, concise test descriptions
+- Document complex test setups
+
+## Test Data
+- Use realistic test data
+- Create reusable test fixtures
+- Keep test data up-to-date
+- Document test data assumptions
+- Clean up test data after tests
+
+## Continuous Testing
+- Run tests before committing
+- Run tests in CI pipeline
+- Monitor test coverage
+- Fix failing tests immediately
+- Update tests with code changes

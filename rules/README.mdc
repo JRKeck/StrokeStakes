@@ -1,0 +1,29 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# StrokeStakes Project Rules and Guidelines
+
+This directory contains the comprehensive set of rules and guidelines for the StrokeStakes project. Each section is broken out into its own file for better maintainability and organization.
+
+## Table of Contents
+
+1. [Code Style and Standards](code-style.mdc)
+2. [Project Structure](project-structure.mdc)
+3. [Development Workflow](development-workflow.mdc)
+4. [Testing](testing.mdc)
+5. [Documentation](documentation.mdc)
+6. [Performance Guidelines](performance.mdc)
+7. [Security](security.mdc)
+8. [Error Handling](error-handling.mdc)
+9. [Accessibility](accessibility.mdc)
+10. [Rules Maintenance](rules-maintenance.mdc)
+
+## Quick Reference
+
+For a quick overview of all rules, see the [Rules Overview](rules-overview.mdc) file.
+
+## Contributing to Rules
+
+See [Rules Maintenance](rules-maintenance.mdc) for guidelines on how to update and maintain these rules.

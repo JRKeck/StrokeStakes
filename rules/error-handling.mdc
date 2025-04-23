@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Error Handling
+
+## Exception Management
+- Handle all expected exceptions
+- Provide meaningful error messages
+- Log errors appropriately
+- Implement proper error recovery
+- Use appropriate exception types
+- Document exception handling
+- Monitor exception rates
+
+## User Feedback
+- Show clear error messages
+- Provide helpful guidance
+- Maintain user context
+- Allow easy error recovery
+- Use appropriate error UI
+- Provide recovery options
+- Keep error messages user-friendly
+
+## Error Logging
+- Log all errors appropriately
+- Include relevant context
+- Use proper log levels
+- Implement structured logging
+- Include stack traces
+- Monitor error rates
+- Review error logs regularly
+
+## Error Recovery
+- Implement proper recovery paths
+- Handle retry logic
+- Provide fallback options
+- Maintain data consistency
+- Handle partial failures
+- Implement proper cleanup
+- Monitor recovery success
+
+## Error Prevention
+- Validate inputs
+- Use proper error boundaries
+- Implement proper checks
+- Use appropriate data types
+- Handle edge cases
+- Implement proper validation
+- Monitor for potential errors
+
+## Error Monitoring
+- Set up error monitoring
+- Track error patterns
+- Monitor error rates
+- Set up error alerts
+- Review error trends
+- Implement error reporting
+- Track error resolution

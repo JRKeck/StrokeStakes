@@ -1,0 +1,78 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Rules Overview
+
+This document provides a quick reference to all project rules. For detailed information, see the individual rule files.
+
+## Code Style
+- Follow Flutter style guide
+- Use proper naming conventions
+- Keep code organized
+- Document code properly
+- Follow best practices
+
+## Project Structure
+- Use feature-based architecture
+- Follow directory organization
+- Keep files focused
+- Use proper naming
+- Maintain consistent structure
+
+## Development Workflow
+- Use proper Git practices
+- Follow branch naming
+- Use pull request process
+- Follow code review guidelines
+- Use continuous integration
+
+## Testing
+- Write unit tests
+- Write widget tests
+- Write integration tests
+- Follow test organization
+- Use proper test naming
+
+## Documentation
+- Document code
+- Update README
+- Document APIs
+- Document architecture
+- Write user docs
+
+## Performance
+- Manage memory
+- Optimize UI
+- Handle network
+- Manage data
+- Monitor performance
+
+## Security
+- Protect data
+- Secure APIs
+- Handle authentication
+- Manage authorization
+- Validate data
+
+## Error Handling
+- Manage exceptions
+- Provide user feedback
+- Log errors
+- Handle recovery
+- Prevent errors
+
+## Accessibility
+- Support screen readers
+- Handle keyboard
+- Support visuals
+- Consider cognition
+- Test accessibility
+
+## Rules Maintenance
+- Add new rules
+- Update rules
+- Review rules
+- Handle exceptions
+- Document rules

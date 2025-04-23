@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Security
+
+## Data Protection
+- Never store sensitive data in code
+- Use secure storage for user data
+- Implement proper authentication
+- Follow security best practices
+- Encrypt sensitive data
+- Use secure communication
+- Implement proper access control
+
+## API Security
+- Use HTTPS for all network calls
+- Implement proper error handling
+- Validate all inputs
+- Sanitize user data
+- Use secure authentication
+- Implement rate limiting
+- Monitor for suspicious activity
+
+## Authentication
+- Use secure authentication methods
+- Implement proper session management
+- Use secure password storage
+- Implement multi-factor authentication
+- Handle authentication errors properly
+- Implement proper logout
+- Monitor authentication attempts
+
+## Authorization
+- Implement proper access control
+- Use role-based access control
+- Validate permissions
+- Implement proper authorization checks
+- Handle authorization errors
+- Monitor authorization attempts
+- Review access regularly
+
+## Data Validation
+- Validate all user inputs
+- Sanitize data before storage
+- Use proper data types
+- Implement input constraints
+- Handle validation errors
+- Use secure data formats
+- Monitor data validation
+
+## Security Monitoring
+- Monitor for security issues
+- Implement security logging
+- Set up security alerts
+- Review security logs
+- Monitor for suspicious activity
+- Implement security audits
+- Review security regularly

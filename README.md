@@ -77,7 +77,20 @@ assets/
 
 ## Development Guidelines
 
-Please refer to [project_rules.mdc](project_rules.mdc) for detailed development guidelines and best practices.
+For comprehensive development guidelines, coding standards, and best practices, please refer to the [rules directory](rules/README.mdc). This directory contains detailed guidelines covering:
+
+- [Code Style and Standards](rules/code-style.mdc)
+- [Project Structure](rules/project-structure.mdc)
+- [Development Workflow](rules/development-workflow.mdc)
+- [Testing](rules/testing.mdc)
+- [Documentation](rules/documentation.mdc)
+- [Performance Guidelines](rules/performance.mdc)
+- [Security](rules/security.mdc)
+- [Error Handling](rules/error-handling.mdc)
+- [Accessibility](rules/accessibility.mdc)
+- [Rules Maintenance](rules/rules-maintenance.mdc)
+
+For a quick reference, see the [Rules Overview](rules/rules-overview.mdc).
 
 ## Game Rules
 

@@ -1,0 +1,41 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Code Style and Standards
+
+## Flutter/Dart Standards
+- Follow the [official Flutter style guide](mdc:https:/dart.dev/guides/language/effective-dart/style)
+- Use `dart format` for code formatting
+- Maximum line length: 80 characters
+- Use 2 spaces for indentation
+- Always use trailing commas in multi-line parameter lists
+
+## Naming Conventions
+- Use `camelCase` for variables and functions
+- Use `PascalCase` for classes and enums
+- Use `lowercase_with_underscores` for file names
+- Prefix private variables with underscore (`_`)
+- Use meaningful, descriptive names
+
+## Code Organization
+- Group related code together
+- Keep classes and functions focused and single-purpose
+- Use appropriate access modifiers (public, private)
+- Follow the SOLID principles
+- Keep methods short and focused
+
+## Comments and Documentation
+- Use clear, concise comments
+- Document all public APIs
+- Use Dart documentation style for public members
+- Keep comments up-to-date with code changes
+- Remove commented-out code before committing
+
+## Best Practices
+- Use const constructors where possible
+- Prefer final variables over var
+- Use named parameters for clarity
+- Implement proper null safety
+- Follow the principle of least privilege

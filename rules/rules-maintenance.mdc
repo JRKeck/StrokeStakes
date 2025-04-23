@@ -1,0 +1,61 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Rules Maintenance
+
+## When to Add New Rules
+- When a new development pattern or best practice is established
+- When a recurring issue is identified that could be prevented with guidelines
+- When new technologies or tools are introduced to the project
+- When team consensus is reached on a new standard
+- When security or performance concerns require specific guidelines
+- When regulatory requirements change
+- When project scope or requirements change
+
+## How to Update Rules
+1. Create a new branch for the rules update
+2. Document the reason for the change in the commit message
+3. Update the relevant section(s) of this document
+4. Update the README if the change affects the rules overview
+5. Create a pull request for team review
+6. Get approval from at least two team members
+7. Merge the changes into main
+8. Communicate changes to the team
+
+## Rules Review Process
+- Review rules quarterly or when major project changes occur
+- Remove outdated or unnecessary rules
+- Consolidate overlapping rules
+- Ensure rules remain relevant to current project needs
+- Update examples and references as needed
+- Document review decisions
+- Communicate changes to the team
+
+## Rule Exceptions
+- Document any exceptions to rules in the relevant section
+- Include the reason for the exception
+- Review exceptions during quarterly reviews
+- Remove exceptions when they are no longer needed
+- Document exception approval process
+- Monitor exception usage
+- Review exception impact
+
+## Rules Documentation
+- Keep rules documentation up-to-date
+- Use clear, concise language
+- Include examples where helpful
+- Document rule rationale
+- Include references to related rules
+- Document rule dependencies
+- Keep documentation organized
+
+## Rules Communication
+- Communicate rule changes to the team
+- Document rule change history
+- Provide training on new rules
+- Gather feedback on rules
+- Address rule-related questions
+- Monitor rule compliance
+- Review rule effectiveness

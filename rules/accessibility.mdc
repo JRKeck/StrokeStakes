@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Accessibility
+
+## UI Accessibility
+- Support screen readers
+- Use semantic widgets
+- Provide proper contrast
+- Support different text sizes
+- Use proper heading hierarchy
+- Implement keyboard navigation
+- Support voice control
+
+## Screen Reader Support
+- Use proper labels
+- Provide alt text for images
+- Use semantic HTML
+- Implement ARIA attributes
+- Provide proper descriptions
+- Support screen reader navigation
+- Test with screen readers
+
+## Keyboard Navigation
+- Support keyboard shortcuts
+- Implement proper focus management
+- Provide keyboard alternatives
+- Follow accessibility guidelines
+- Support tab navigation
+- Handle focus traps
+- Test keyboard navigation
+
+## Visual Accessibility
+- Use proper color contrast
+- Support high contrast mode
+- Provide text alternatives
+- Use appropriate font sizes
+- Support zoom functionality
+- Handle reduced motion
+- Test visual accessibility
+
+## Cognitive Accessibility
+- Use clear language
+- Provide clear instructions
+- Use consistent navigation
+- Support different reading levels
+- Provide clear feedback
+- Use appropriate timing
+- Test cognitive accessibility
+
+## Accessibility Testing
+- Test with screen readers
+- Test keyboard navigation
+- Test color contrast
+- Test with different text sizes
+- Test with different devices
+- Test with different users
+- Document accessibility testing
