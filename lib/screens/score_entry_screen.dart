@@ -150,7 +150,7 @@ class _ScoreEntryScreenState extends State<ScoreEntryScreen> {
                         ),
                       );
                     },
-                    child: const Text('Calculate Results'),
+                    child: const Text('View Results'),
                   ),
                 ],
               ),
