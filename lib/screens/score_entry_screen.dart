@@ -24,40 +24,46 @@ class _ScoreEntryScreenState extends State<ScoreEntryScreen> {
 
   Future<bool> _showExitConfirmationDialog(BuildContext context) async {
     return await showDialog<bool>(
-      context: context,
-      builder: (BuildContext dialogContext) {
-        return AlertDialog(
-          titlePadding: EdgeInsets.zero, // Remove default padding around title
-          contentPadding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 30.0),
-          actionsPadding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18.0),
-          title: const DialogTitleBar(title: 'Exit Game'),
-          content: const Text('Are you sure you want to exit the game? All progress will be lost.'),
-          actions: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                minimumSize: Size.zero,
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-              onPressed: () => Navigator.of(dialogContext).pop(false),
-              child: const Text('Cancel'),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                minimumSize: Size.zero,
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-              onPressed: () {
-                Navigator.of(dialogContext).pop(true);
-                widget.scoreCalculationService.endCalculation();
-              },
-              child: const Text('Exit'),
-            ),
-          ],
-        );
-      },
-    ) ?? false;
+          context: context,
+          builder: (BuildContext dialogContext) {
+            return AlertDialog(
+              titlePadding:
+                  EdgeInsets.zero, // Remove default padding around title
+              contentPadding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 30.0),
+              actionsPadding:
+                  const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18.0),
+              title: const DialogTitleBar(title: 'Exit Game'),
+              content: const Text(
+                  'Are you sure you want to exit the game? All progress will be lost.'),
+              actions: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 16.0),
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                  onPressed: () => Navigator.of(dialogContext).pop(false),
+                  child: const Text('Cancel'),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 16.0),
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                  onPressed: () {
+                    Navigator.of(dialogContext).pop(true);
+                    widget.scoreCalculationService.endCalculation();
+                  },
+                  child: const Text('Exit'),
+                ),
+              ],
+            );
+          },
+        ) ??
+        false;
   }
 
   @override
@@ -82,7 +88,8 @@ class _ScoreEntryScreenState extends State<ScoreEntryScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(calculation.isFrontNine ? 'Front 9 Scores' : 'Back 9 Scores'),
+          title: Text(
+              calculation.isFrontNine ? 'Front 9 Scores' : 'Back 9 Scores'),
         ),
         body: Column(
           children: [
@@ -90,13 +97,13 @@ class _ScoreEntryScreenState extends State<ScoreEntryScreen> {
               child: ListView(
                 children: [
                   ...animals.map((animal) => AnimalScoreEntryWidget(
-                    key: ValueKey('${animal}_${calculation.isFrontNine}'),
-                    animalName: animal,
-                    playerScores: calculation.playerScores,
-                    isFrontNine: calculation.isFrontNine,
-                    scoreCalculationService: widget.scoreCalculationService,
-                    onScoreUpdated: _onScoreUpdated,
-                  )),
+                        key: ValueKey('${animal}_${calculation.isFrontNine}'),
+                        animalName: animal,
+                        playerScores: calculation.playerScores,
+                        isFrontNine: calculation.isFrontNine,
+                        scoreCalculationService: widget.scoreCalculationService,
+                        onScoreUpdated: _onScoreUpdated,
+                      )),
                   GreenieScoreEntryWidget(
                     key: ValueKey('Greenie_${calculation.isFrontNine}'),
                     playerScores: calculation.playerScores,
@@ -128,21 +135,23 @@ class _ScoreEntryScreenState extends State<ScoreEntryScreen> {
                         }
                       });
                     },
-                    child: Text(calculation.isFrontNine ? 'Switch to Back 9' : 'Switch to Front 9'),
+                    child: Text(calculation.isFrontNine
+                        ? 'Switch to Back 9'
+                        : 'Switch to Front 9'),
                   ),
-                  if (!calculation.isFrontNine)
-                    const SizedBox(height: 8),
-                  if (!calculation.isFrontNine)
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => TotalsScreen(scoreCalculationService: widget.scoreCalculationService),
-                          ),
-                        );
-                      },
-                      child: const Text('Calculate Results'),
-                    ),
+                  const SizedBox(height: 8),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => TotalsScreen(
+                              scoreCalculationService:
+                                  widget.scoreCalculationService),
+                        ),
+                      );
+                    },
+                    child: const Text('Calculate Results'),
+                  ),
                 ],
               ),
             ),

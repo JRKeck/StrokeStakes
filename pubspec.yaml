@@ -1,5 +1,5 @@
 name: stroke_stakes
-description: "A new Flutter project."
+description: "A Flutter application for managing golf betting games and score tracking."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
@@ -11,19 +11,21 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  logging: ^1.1.0 # Add the logging package
+  logging: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
-  flutter_launcher_icons: ^0.13.1
+  flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.14.3
 
 flutter:
   uses-material-design: true
 
   assets:
     - assets/images/
+    - assets/icons/
+    - assets/fonts/
 
 flutter_launcher_icons:
   android: true

@@ -14,7 +14,6 @@ const Color _darkSecondaryColor = _secondaryColor;
 const Color _darkSurfaceColor = Color(0xFF303030); // Dark Grey
 const Color _darkErrorColor = Color.fromRGBO(229, 255, 0, 1);
 const Color _darkPrimaryTextColor = Colors.white;
-const Color _darkSecondaryTextColor = Colors.black;
 
 // Font variables
 const String _primaryFont = 'Roboto';
@@ -110,8 +109,10 @@ class AppTheme {
         ),
       ),
       dialogTheme: _sharedDialogTheme.copyWith(
-        titleTextStyle: _baseTextTheme.titleMedium!.copyWith(color: _primaryTextColor),
-        contentTextStyle: _baseTextTheme.bodyMedium!.copyWith(color: _primaryTextColor),
+        titleTextStyle:
+            _baseTextTheme.titleMedium!.copyWith(color: _primaryTextColor),
+        contentTextStyle:
+            _baseTextTheme.bodyMedium!.copyWith(color: _primaryTextColor),
       ),
     );
   }
@@ -149,8 +150,10 @@ class AppTheme {
         ),
       ),
       dialogTheme: _sharedDialogTheme.copyWith(
-        titleTextStyle: _baseTextTheme.titleMedium!.copyWith(color: _darkPrimaryTextColor),
-        contentTextStyle: _baseTextTheme.bodyMedium!.copyWith(color: _darkPrimaryTextColor),
+        titleTextStyle:
+            _baseTextTheme.titleMedium!.copyWith(color: _darkPrimaryTextColor),
+        contentTextStyle:
+            _baseTextTheme.bodyMedium!.copyWith(color: _darkPrimaryTextColor),
       ),
     );
   }

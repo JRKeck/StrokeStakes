@@ -42,7 +42,8 @@ class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
   }
 
   void _updateDisplayScore() {
-    final wadOwner = widget.scoreCalculationService.getWadOwner(widget.isFrontNine);
+    final wadOwner =
+        widget.scoreCalculationService.getWadOwner(widget.isFrontNine);
     setState(() {
       displayPlayerName = wadOwner?.playerName;
       displayWadCount = wadOwner?.wadCount;
@@ -51,8 +52,6 @@ class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final Color primaryTextColor = Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black;
-
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -87,17 +86,20 @@ class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
 
         return StatefulBuilder(
           builder: (context, setState) {
-            final Color primaryTextColor = Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black;
+            final Color primaryTextColor =
+                Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black;
 
             // Determine the dialog title dynamically
-            final String dialogTitle = displayWadCount != null && displayWadCount! > 0
-                ? 'Update Wads'
-                : 'Add Wads';
+            final String dialogTitle =
+                displayWadCount != null && displayWadCount! > 0
+                    ? 'Update Wads'
+                    : 'Add Wads';
 
             return AlertDialog(
               titlePadding: EdgeInsets.zero,
               contentPadding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 30.0),
-              actionsPadding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18.0),
+              actionsPadding:
+                  const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18.0),
               title: DialogTitleBar(title: dialogTitle),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -115,7 +117,8 @@ class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
                     onChanged: (String? value) {
                       setState(() {
                         selectedPlayer = value;
-                        _validationError = null; // Clear validation error when a player is selected
+                        _validationError =
+                            null; // Clear validation error when a player is selected
                       });
                     },
                   ),
@@ -124,7 +127,8 @@ class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Text(
                         _validationError!,
-                        style: TextStyle(color: Theme.of(context).colorScheme.error),
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.error),
                       ),
                     ),
                   const SizedBox(height: 16),
@@ -134,7 +138,8 @@ class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
                       GestureDetector(
                         onTap: wadCount > 0
                             ? () {
-                                HapticFeedback.lightImpact(); // Add haptic feedback when decrementing
+                                HapticFeedback
+                                    .lightImpact(); // Add haptic feedback when decrementing
                                 setState(() => wadCount--);
                               }
                             : null,
@@ -155,11 +160,13 @@ class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Text('$wadCount', style: Theme.of(context).textTheme.headlineSmall),
+                        child: Text('$wadCount',
+                            style: Theme.of(context).textTheme.headlineSmall),
                       ),
                       GestureDetector(
                         onTap: () {
-                          HapticFeedback.lightImpact(); // Add haptic feedback when incrementing
+                          HapticFeedback
+                              .lightImpact(); // Add haptic feedback when incrementing
                           setState(() => wadCount++);
                         },
                         child: Container(
@@ -184,7 +191,8 @@ class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
               actions: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 16.0),
                     minimumSize: Size.zero,
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
@@ -193,7 +201,8 @@ class _WadScoreEntryWidgetState extends State<WadScoreEntryWidget> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 16.0),
                     minimumSize: Size.zero,
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
