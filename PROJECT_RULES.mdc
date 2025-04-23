@@ -1,0 +1,193 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# StrokeStakes Project Rules
+
+## Code Style and Formatting
+1. Follow the [Dart Style Guide](mdc:https:/dart.dev/guides/language/effective-dart/style)
+2. Use `dart format` to format code before committing
+3. Maximum line length: 80 characters
+4. Use 2 spaces for indentation
+5. Always use trailing commas in multi-line parameter lists
+
+## Models
+- All model classes should be placed in `lib/features/*/models/`
+- Models should be immutable and use `copyWith` pattern
+- Models must have Hive adapters registered for persistence
+- Models should include proper documentation
+- Keep model files focused and single-responsibility
+
+## Data Persistence
+- Hive storage operations should be centralized in `lib/services/hive_service.dart`
+- All data persistence operations must go through the Hive service
+- Data providers should be placed in `lib/features/*/providers/`
+- Providers should use Hive service for data operations
+
+## State Management
+- Use Provider for state management
+- Keep providers focused and single-responsibility
+- Avoid provider nesting when possible
+- Use proper dependency injection
+- Keep business logic separate from UI code
+- Implement proper state immutability
+
+## Routing
+- All routes should be defined in `lib/config/routes.dart`
+- Use named routes for navigation with `Navigator.pushNamed`
+- Dynamic routes should be handled in `onGenerateRoute`
+- Route names should be defined as constants in `AppRoutes`
+- Route parameters should be passed through the route path
+- Handle unknown routes with a proper error screen
+- Use route constants instead of string literals for navigation
+
+## Widget Organization
+- Break down large widgets into smaller, reusable components
+- Use `StatelessWidget` when possible
+- Implement `StatefulWidget` only when necessary
+- Keep widget files focused and single-responsibility
+- Widgets should be placed in `lib/features/*/widgets/`
+- Screens should be placed in `lib/screens/`
+
+## Project Structure
+```
+lib/
+├── core/           # Core functionality, utilities, and constants
+├── config/         # App configuration, routes, env
+├── features/       # Feature-specific code
+│   ├── feature_name/
+│   │   ├── models/
+│   │   ├── providers/
+│   │   ├── widgets/
+│   │   └── screens/
+├── services/       # Global services (Hive, etc.)
+├── shared/        # Shared widgets and utilities
+├── styles/        # Theme and styling
+└── main.dart
+```
+
+## Performance Optimization
+- Use `const` constructors for widgets
+- Implement `ListView.builder` for long lists
+- Use `RepaintBoundary` for complex animations
+- Optimize image assets with proper sizes
+- Implement proper caching strategies
+- Minimize rebuilds
+- Implement proper pagination for lists
+
+## Testing
+- Unit tests for models and providers
+- Widget tests for UI components
+- Integration tests for critical user flows
+- Test files should mirror the structure of the source files
+- Maintain test coverage above 80%
+- Use meaningful test names that describe the test case
+
+## Documentation
+- Document all public APIs
+- Use clear and concise comments
+- Update README.md with new features
+- Document complex business logic
+- Include examples for non-obvious implementations
+
+## Error Handling
+- Implement proper error handling in services
+- Show user-friendly error messages
+- Log errors appropriately
+- Handle edge cases gracefully
+- Implement retry mechanisms where appropriate
+
+## Security
+- No sensitive data in code
+- Use secure storage for sensitive information
+- Implement proper input validation
+- Follow security best practices
+- Follow OWASP security guidelines
+
+## Git Workflow
+1. Create feature branches from `main`
+2. Branch naming: `feature/description` or `fix/description`
+3. Write descriptive commit messages
+4. Create pull requests for code review
+5. Squash and merge to `main`
+
+## Naming Conventions
+- Files: snake_case.dart
+- Classes: PascalCase
+- Variables and methods: camelCase
+- Constants: SCREAMING_SNAKE_CASE
+- Route names: kebab-case (e.g., '/hole-view')
+- Private members: Prefix with underscore (e.g., `_privateVariable`)
+
+## Dependencies
+1. Keep dependencies up to date
+2. Document why each dependency is needed
+3. Use specific version numbers
+4. Review dependencies for security vulnerabilities
+5. Minimize the number of dependencies
+
+## Flutter Best Practices
+1. **Theme and Styling**
+   - Use theme data for consistent styling
+   - Implement responsive design
+   - Use proper text scaling
+   - Follow Material Design guidelines
+   - Create reusable style constants
+
+2. **Asset Management**
+   - Organize assets in proper directories
+   - Use proper image formats (WebP when possible)
+   - Implement proper asset caching
+   - Follow platform-specific asset guidelines
+
+3. **Platform-Specific Code**
+   - Use platform channels for native functionality
+   - Implement proper error handling for platform calls
+   - Follow platform-specific design guidelines
+   - Test platform-specific features thoroughly
+
+4. **Internationalization**
+   - Use `intl` package for translations
+   - Implement proper RTL support
+   - Handle different date/time formats
+   - Test with different locales
+
+## Accessibility
+1. Use semantic widgets
+2. Provide text alternatives for images
+3. Ensure proper color contrast
+4. Support screen readers
+5. Test with accessibility tools
+
+## Code Review
+1. Review code for:
+   - Functionality
+   - Performance
+   - Security
+   - Accessibility
+   - Code style
+2. Provide constructive feedback
+3. Address all comments before merging
+4. Keep PRs small and focused
+
+## Release Process
+1. Version numbers follow semantic versioning
+2. Create release notes
+3. Test on all target platforms
+4. Update documentation
+5. Tag releases in git
+
+## Maintenance
+1. Regular dependency updates
+2. Code cleanup and refactoring
+3. Performance monitoring
+4. Security audits
+5. Regular backups
+
+## Communication
+1. Document major decisions
+2. Keep team members informed
+3. Use clear and professional language
+4. Document meeting notes
+5. Share knowledge and best practices

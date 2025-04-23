@@ -5,10 +5,12 @@ A Flutter application for managing golf betting games and score tracking.
 ## Features
 
 - Player Management
-- Score Calculation
-- Game Setup
-- Payouts Tracking
-- Real-time Score Updates
+- Hole-by-Hole Score Tracking
+- Animal Scoring (Snakes, Gorillas, Camels, Frogs)
+- Greenie and Wad Tracking
+- Game Setup and Configuration
+- Real-time Score Updates and Totals
+- Comprehensive Payout Calculations
 
 ## Getting Started
 
@@ -46,13 +48,20 @@ flutter run
 ```
 lib/
 ├── core/           # Core functionality, utilities, and constants
+├── config/         # App configuration, routes, env
 ├── features/       # Feature-specific code
-│   ├── auth/      # Authentication related code
-│   ├── profile/   # User profile related code
-│   └── ...        # Other features
-├── shared/         # Shared widgets and components
-├── services/       # API services and business logic
-└── main.dart       # Application entry point
+│   ├── score_calculation/
+│   │   ├── models/
+│   │   ├── providers/
+│   │   ├── widgets/
+│   │   └── screens/
+│   ├── player_management/
+│   ├── game_setup/
+│   └── payouts_card/
+├── services/       # Global services (Hive, etc.)
+├── shared/        # Shared widgets and utilities
+├── styles/        # Theme and styling
+└── main.dart
 ```
 
 ## Assets
@@ -68,7 +77,21 @@ assets/
 
 ## Development Guidelines
 
-Please refer to [PROJECT_RULES.md](PROJECT_RULES.md) for detailed development guidelines and best practices.
+Please refer to [PROJECT_RULES.mdc](PROJECT_RULES.mdc) for detailed development guidelines and best practices.
+
+## Game Rules
+
+### Scoring
+- **Animals**: Track Snakes, Gorillas, Camels, and Frogs on each hole
+- **Greenies**: Record birdie, par, or bogey+ results
+- **Wads**: Track wad ownership and counts
+- **Zookeeper**: Special scoring when a player collects all animals
+
+### Payouts
+- Animal payouts based on total counts and Zookeeper status
+- Greenie payouts vary by result (2x for birdie, 1x for par)
+- Wad payouts calculated per nine holes
+- All payouts automatically calculated at game end
 
 ## Contributing
 
