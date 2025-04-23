@@ -77,7 +77,7 @@ assets/
 
 ## Development Guidelines
 
-Please refer to [PROJECT_RULES.mdc](PROJECT_RULES.mdc) for detailed development guidelines and best practices.
+Please refer to [project_rules.mdc](project_rules.mdc) for detailed development guidelines and best practices.
 
 ## Game Rules
 
