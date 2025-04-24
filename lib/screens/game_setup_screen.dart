@@ -7,7 +7,8 @@ import 'score_entry_screen.dart'; // Screen for entering game scores
 
 // GameSetupScreen is a stateful widget that allows the user to set up a game
 class GameSetupScreen extends StatefulWidget {
-  final ScoreCalculationService scoreCalculationService; // Service to manage score calculations
+  final ScoreCalculationService
+      scoreCalculationService; // Service to manage score calculations
 
   const GameSetupScreen({super.key, required this.scoreCalculationService});
 
@@ -17,10 +18,14 @@ class GameSetupScreen extends StatefulWidget {
 
 // State class for GameSetupScreen
 class _GameSetupScreenState extends State<GameSetupScreen> {
-  final _formKey = GlobalKey<FormState>(); // Key to uniquely identify and validate the form
-  final TextEditingController _zookeeperBetController = TextEditingController(text: '1'); // Controller for zookeeper bet input
-  final TextEditingController _greeniesBetController = TextEditingController(text: '5'); // Controller for greenies bet input
-  final TextEditingController _wadBetController = TextEditingController(text: '5'); // Controller for wad bet input
+  final _formKey =
+      GlobalKey<FormState>(); // Key to uniquely identify and validate the form
+  final TextEditingController _zookeeperBetController =
+      TextEditingController(text: '1'); // Controller for zookeeper bet input
+  final TextEditingController _greeniesBetController =
+      TextEditingController(text: '5'); // Controller for greenies bet input
+  final TextEditingController _wadBetController =
+      TextEditingController(text: '5'); // Controller for wad bet input
   final List<String> _players = []; // List to store player names
 
   @override
@@ -40,7 +45,8 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
               onPlayersChanged: (players) {
                 setState(() {
                   _players.clear();
-                  _players.addAll(players); // Updates the player list whenever changes occur
+                  _players.addAll(
+                      players); // Updates the player list whenever changes occur
                 });
               },
             ),
@@ -53,7 +59,8 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
             ),
             const SizedBox(height: 20), // Spacer
             ElevatedButton(
-              onPressed: _enterGameScores, // Calls _enterGameScores when pressed
+              onPressed:
+                  _enterGameScores, // Calls _enterGameScores when pressed
               child: const Text('ENTER GAME SCORES'), // Button label
             ),
           ],
@@ -68,7 +75,9 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
     if (_formKey.currentState!.validate()) {
       if (_players.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Please add at least one player')), // Error message if no players are added
+          const SnackBar(
+              content: Text(
+                  'Please add at least one player')), // Error message if no players are added
         );
       } else {
         // Calls the score calculation service to start a new game calculation
@@ -82,7 +91,8 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => ScoreEntryScreen(scoreCalculationService: widget.scoreCalculationService),
+            builder: (context) => ScoreEntryScreen(
+                scoreCalculationService: widget.scoreCalculationService),
           ),
         );
       }
